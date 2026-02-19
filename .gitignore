@@ -60,3 +60,7 @@ azure-pipelines.yml
 # Temporary files
 *.tmp
 *.temp
+
+# Archived docs
+_archived/
+docs/**/_archived/
