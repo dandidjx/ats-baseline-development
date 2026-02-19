@@ -6,6 +6,16 @@ import {
   MenuPopover,
   MenuTrigger,
 } from "@fluentui/react-components";
+import {
+  AddRegular,
+  AppsListRegular,
+  ArrowClockwiseRegular,
+  BoardRegular,
+  ChevronDownRegular,
+  EditRegular,
+  FilterRegular,
+  ListRegular,
+} from "@fluentui/react-icons";
 import type { LifecycleFilter, SortOption, ViewMode } from "../types/job";
 import { STAGE_LABELS } from "../types/job";
 import { SortMenu } from "./SortMenu";
@@ -64,21 +74,27 @@ export function ToolbarRow({
           appearance={viewMode === "board" ? "primary" : "outline"}
           onClick={() => onViewModeChange("board")}
           aria-label="Board view"
-        >
-          [ ]
-        </Button>
+          icon={<BoardRegular />}
+        />
         <Button
           className="toolbar-icon-btn"
           appearance={viewMode === "list" ? "primary" : "outline"}
           onClick={() => onViewModeChange("list")}
           aria-label="List view"
+          icon={<ListRegular />}
+        />
+        <Button
+          className="toolbar-primary-btn"
+          appearance="primary"
+          icon={<AddRegular />}
         >
-          =
-        </Button>
-        <Button className="toolbar-primary-btn" appearance="primary">
           + Job Opening
         </Button>
-        <Button className="toolbar-text-btn" appearance="subtle">
+        <Button
+          className="toolbar-text-btn"
+          appearance="subtle"
+          icon={<ArrowClockwiseRegular />}
+        >
           Refresh
         </Button>
       </div>
@@ -88,8 +104,14 @@ export function ToolbarRow({
       <div className="toolbar-right">
         <Menu>
           <MenuTrigger disableButtonEnhancement>
-            <Button className="toolbar-dropdown-btn" appearance="outline">
+            <Button
+              className="toolbar-dropdown-btn"
+              appearance="outline"
+              icon={<AppsListRegular />}
+              iconPosition="before"
+            >
               {lifecycleLabel}
+              <ChevronDownRegular className="dropdown-chevron" />
             </Button>
           </MenuTrigger>
           <MenuPopover>
@@ -106,9 +128,12 @@ export function ToolbarRow({
           </MenuPopover>
         </Menu>
 
-        <Button className="toolbar-small-btn" appearance="outline" aria-label="Edit">
-          P
-        </Button>
+        <Button
+          className="toolbar-small-btn"
+          appearance="outline"
+          aria-label="Edit"
+          icon={<EditRegular />}
+        />
 
         <Menu>
           <MenuTrigger disableButtonEnhancement>
@@ -139,7 +164,7 @@ export function ToolbarRow({
         </Menu>
 
         <Button className="toolbar-small-btn" appearance="outline" aria-label="Filter">
-          F
+          <FilterRegular />
         </Button>
         <SortMenu selectedSort={sortOption} onSelectSort={onSortOptionChange} />
       </div>

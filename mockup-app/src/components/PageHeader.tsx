@@ -1,4 +1,11 @@
 import { Avatar, Button, Input } from "@fluentui/react-components";
+import {
+  InfoRegular,
+  MailRegular,
+  NavigationRegular,
+  SearchRegular,
+  SettingsRegular,
+} from "@fluentui/react-icons";
 
 interface PageHeaderProps {
   searchValue: string;
@@ -10,11 +17,11 @@ export function PageHeader({ searchValue, onSearchChange }: PageHeaderProps) {
     <section className="page-header">
       <div className="page-title-wrap">
         <Button
-          className="icon-btn"
+          className="icon-btn icon-btn-light"
           appearance="transparent"
           aria-label="Open navigation"
+          icon={<NavigationRegular />}
         >
-          =
         </Button>
         <h1 className="page-title">Job Openings</h1>
       </div>
@@ -24,19 +31,28 @@ export function PageHeader({ searchValue, onSearchChange }: PageHeaderProps) {
         value={searchValue}
         onChange={(_, data) => onSearchChange(data.value)}
         placeholder="Search"
-        contentAfter={<span className="glyph">Q</span>}
+        contentAfter={<SearchRegular className="search-glyph" />}
       />
 
       <div className="header-actions">
-        <Button className="icon-btn" appearance="transparent" aria-label="Settings">
-          S
-        </Button>
-        <Button className="icon-btn" appearance="transparent" aria-label="Info">
-          I
-        </Button>
-        <Button className="icon-btn" appearance="transparent" aria-label="Mail">
-          M
-        </Button>
+        <Button
+          className="icon-btn icon-btn-light"
+          appearance="transparent"
+          aria-label="Settings"
+          icon={<SettingsRegular />}
+        />
+        <Button
+          className="icon-btn icon-btn-light"
+          appearance="transparent"
+          aria-label="Info"
+          icon={<InfoRegular />}
+        />
+        <Button
+          className="icon-btn icon-btn-light"
+          appearance="transparent"
+          aria-label="Mail"
+          icon={<MailRegular />}
+        />
         <Avatar
           name="Maria Bennett"
           initials="MB"

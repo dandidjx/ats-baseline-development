@@ -6,6 +6,7 @@ import {
   MenuPopover,
   MenuTrigger,
 } from "@fluentui/react-components";
+import { CheckmarkRegular, MoreHorizontalRegular } from "@fluentui/react-icons";
 import { useMemo, useState } from "react";
 import { SORT_OPTION_LABELS, type SortOption } from "../types/job";
 
@@ -34,21 +35,28 @@ export function SortMenu({ selectedSort, onSelectSort }: SortMenuProps) {
   return (
     <Menu open={open} onOpenChange={(_, data) => setOpen(data.open)}>
       <MenuTrigger disableButtonEnhancement>
-        <Button className="toolbar-small-btn" appearance="outline" aria-label="Sort options">
-          ...
-        </Button>
+        <Button
+          className="toolbar-small-btn"
+          appearance="outline"
+          aria-label="Sort options"
+          icon={<MoreHorizontalRegular />}
+        />
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
           {labelList.map((option) => (
             <MenuItem
               key={option.value}
+              icon={
+                selectedSort === option.value ? (
+                  <CheckmarkRegular className="menu-checkmark" />
+                ) : undefined
+              }
               onClick={() => {
                 onSelectSort(option.value);
               }}
             >
               <span className={selectedSort === option.value ? "menu-item-selected" : ""}>
-                {selectedSort === option.value ? "* " : ""}
                 {option.label}
               </span>
             </MenuItem>
